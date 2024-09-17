@@ -2,13 +2,13 @@ groups:
   - name: heartbeat-rules
     rules:
       - alert: DailyMonitoringHeartbeat
-        expr: absent(heartbeat{job="manual"})
-        for: 10m
+        expr: absent(heartbeat{job="manual"} == 1)
+        for: 25h # Allows the metric to be absent for 25 hours before firing, covering expected timing variations
         labels:
-          severity: info
+          severity: critical
         annotations:
           summary: "Daily Monitoring Heartbeat Missing"
-          description: "The daily monitoring heartbeat alert was not received at the expected time."
+          description: "The daily monitoring heartbeat alert was not received at the expected time. This may indicate an issue with the heartbeat mechanism."
 
   - name: docker-host-rules
     rules:
