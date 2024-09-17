@@ -2,7 +2,6 @@ global:
   resolve_timeout: 5m
 
 route:
-  # Define the default route for alerts
   receiver: discord-webhook
   group_wait: 30s
   group_interval: 5m
@@ -11,10 +10,9 @@ route:
 receivers:
   - name: 'discord-webhook'
     webhook_configs:
-      - url: 'discord-webhook'
+      - url: 'DISCORD_WEBHOOK_HERE'
         send_resolved: true
-        http_config:
-          follow_redirects: true
+        max_alerts: 1  # Adjust to avoid rate limiting by Discord
 
 inhibit_rules:
   - source_match:
