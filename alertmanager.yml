@@ -1,1 +1,23 @@
+global:
+  resolve_timeout: 5m
 
+route:
+  # Define the default route for alerts
+  receiver: discord-webhook
+  group_wait: 30s
+  group_interval: 5m
+  repeat_interval: 1h
+
+receivers:
+  - name: 'discord-webhook'
+    webhook_configs:
+      - url: 'YOUR_DISCORD_WEBHOOK_URL'  # Replace with your actual Discord webhook URL
+        send_resolved: true
+
+inhibit_rules:
+  # Example of inhibition rules
+  - source_match:
+      severity: 'critical'
+    target_match:
+      severity: 'warning'
+    equal: ['alertname', 'instance']
