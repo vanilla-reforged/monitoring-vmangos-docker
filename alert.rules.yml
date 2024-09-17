@@ -9,7 +9,7 @@ groups:
           severity: warning
         annotations:
           summary: "High CPU Usage on Docker Host"
-          description: "CPU usage on the Docker host is above 80% for more than 5 minutes."
+          description: "CPU usage on the Docker host is above 80% for more than 5 minutes. Current value: {{ $value }}%."
 
       # Critical CPU usage on Docker host
       - alert: CriticalCPUUsageHost
@@ -19,7 +19,7 @@ groups:
           severity: critical
         annotations:
           summary: "Critical CPU Usage on Docker Host"
-          description: "CPU usage on the Docker host is above 85% for more than 5 minutes."
+          description: "CPU usage on the Docker host is above 85% for more than 5 minutes. Current value: {{ $value }}%."
 
       # High memory usage on Docker host
       - alert: HighMemoryUsageHost
@@ -29,7 +29,7 @@ groups:
           severity: warning
         annotations:
           summary: "High Memory Usage on Docker Host"
-          description: "Memory usage on the Docker host is above 80% for more than 5 minutes."
+          description: "Memory usage on the Docker host is above 80% for more than 5 minutes. Current value: {{ $value }}%."
 
       # Critical memory usage on Docker host
       - alert: CriticalMemoryUsageHost
@@ -39,7 +39,7 @@ groups:
           severity: critical
         annotations:
           summary: "Critical Memory Usage on Docker Host"
-          description: "Memory usage on the Docker host is above 85% for more than 5 minutes."
+          description: "Memory usage on the Docker host is above 85% for more than 5 minutes. Current value: {{ $value }}%."
 
       # Low disk space on Docker host
       - alert: LowDiskSpaceHost
@@ -49,7 +49,7 @@ groups:
           severity: warning
         annotations:
           summary: "Low Disk Space on Docker Host"
-          description: "Disk space on the Docker host is less than 20% available for more than 10 minutes."
+          description: "Disk space on the Docker host is less than 20% available for more than 10 minutes. Current value: {{ $value }}%."
 
       # Critical low disk space on Docker host
       - alert: CriticalLowDiskSpaceHost
@@ -59,7 +59,7 @@ groups:
           severity: critical
         annotations:
           summary: "Critical Low Disk Space on Docker Host"
-          description: "Disk space on the Docker host is less than 15% available for more than 10 minutes."
+          description: "Disk space on the Docker host is less than 15% available for more than 10 minutes. Current value: {{ $value }}%."
 
   - name: critical-containers-rules
     rules:
@@ -71,7 +71,7 @@ groups:
           severity: critical
         annotations:
           summary: "High CPU Usage for Critical Container"
-          description: "Container {{ $labels.name }} CPU usage is above 85% for more than 5 minutes."
+          description: "Container {{ $labels.name }} CPU usage is above 85% for more than 5 minutes. Current value: {{ $value }}%."
 
       # High memory usage for critical containers
       - alert: CriticalContainerHighMemoryUsage
@@ -81,7 +81,7 @@ groups:
           severity: critical
         annotations:
           summary: "High Memory Usage for Critical Container"
-          description: "{{ $labels.name }} is using more than 85% of its allocated memory for more than 5 minutes."
+          description: "{{ $labels.name }} is using more than 85% of its allocated memory for more than 5 minutes. Current value: {{ $value }}%."
 
       # Low disk space for critical containers (if applicable)
       - alert: CriticalContainerLowDiskSpace
@@ -91,7 +91,7 @@ groups:
           severity: critical
         annotations:
           summary: "Low Disk Space for Critical Container"
-          description: "Disk space for critical containers is less than 15% available for more than 10 minutes."
+          description: "Disk space for critical containers is less than 15% available for more than 10 minutes. Current value: {{ $value }}%."
 
   - name: secondary-containers-rules
     rules:
@@ -103,17 +103,7 @@ groups:
           severity: warning
         annotations:
           summary: "High CPU Usage for Secondary Container"
-          description: "Container {{ $labels.name }} CPU usage is above 90% for more than 5 minutes."
-
-      # High memory usage for secondary containers
-      #- alert: SecondaryContainerHighMemoryUsage
-      #  expr: (container_memory_usage_bytes{name=~"wordpress|wordpress-database|traefik"} / container_spec_memory_limit_bytes{name=~"wordpress|wordpress-database|traefik"}) * 100 > 90
-      #  for: 5m
-      #  labels:
-      #    severity: warning
-      #  annotations:
-      #    summary: "High Memory Usage for Secondary Container"
-      #    description: "{{ $labels.name }} is using more than 90% of its allocated memory for more than 5 minutes."
+          description: "Container {{ $labels.name }} CPU usage is above 90% for more than 5 minutes. Current value: {{ $value }}%."
 
       # Low disk space for secondary containers (if applicable)
       - alert: SecondaryContainerLowDiskSpace
@@ -123,7 +113,7 @@ groups:
           severity: warning
         annotations:
           summary: "Low Disk Space for Secondary Container"
-          description: "Disk space for secondary containers is less than 10% available for more than 10 minutes."
+          description: "Disk space for secondary containers is less than 10% available for more than 10 minutes. Current value: {{ $value }}%."
 
   - name: monitoring-containers-rules
     rules:
@@ -135,17 +125,7 @@ groups:
           severity: warning
         annotations:
           summary: "High CPU Usage for Monitoring Container"
-          description: "Container {{ $labels.name }} CPU usage is above 95% for more than 5 minutes."
-
-      # High memory usage for monitoring containers
-      #- alert: MonitoringContainerHighMemoryUsage
-      #  expr: (container_memory_usage_bytes{name=~"prometheus|cadvisor|grafana|alertmanager|node_exporter"} / container_spec_memory_limit_bytes{name=~"prometheus|cadvisor|grafana|alertmanager|node_exporter"}) * 100 > 95
-      #  for: 5m
-      #  labels:
-      #    severity: warning
-      #  annotations:
-      #    summary: "High Memory Usage for Monitoring Container"
-      #    description: "{{ $labels.name }} is using more than 95% of its allocated memory for more than 5 minutes."
+          description: "Container {{ $labels.name }} CPU usage is above 95% for more than 5 minutes. Current value: {{ $value }}%."
 
       # Low disk space for monitoring containers (if applicable)
       - alert: MonitoringContainerLowDiskSpace
@@ -155,4 +135,4 @@ groups:
           severity: warning
         annotations:
           summary: "Low Disk Space for Monitoring Container"
-          description: "Disk space for monitoring containers is less than 5% available for more than 10 minutes."
+          description: "Disk space for monitoring containers is less than 5% available for more than 10 minutes. Current value: {{ $value }}%."
