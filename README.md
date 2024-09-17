@@ -70,3 +70,5 @@ How to integrate Grafana with Discord:
 ```sh
 https://grafana.com/docs/grafana/latest/alerting/configure-notifications/manage-contact-points/integrations/configure-discord/
 ```
+
+Input your webhook in alertmanager.yml to receive discord notifications.
