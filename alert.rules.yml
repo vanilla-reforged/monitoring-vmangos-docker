@@ -106,14 +106,14 @@ groups:
           description: "Container {{ $labels.name }} CPU usage is above 90% for more than 5 minutes."
 
       # High memory usage for secondary containers
-      - alert: SecondaryContainerHighMemoryUsage
-        expr: (container_memory_usage_bytes{name=~"wordpress|wordpress-database|traefik"} / container_spec_memory_limit_bytes{name=~"wordpress|wordpress-database|traefik"}) * 100 > 90
-        for: 5m
-        labels:
-          severity: warning
-        annotations:
-          summary: "High Memory Usage for Secondary Container"
-          description: "{{ $labels.name }} is using more than 90% of its allocated memory for more than 5 minutes."
+      #- alert: SecondaryContainerHighMemoryUsage
+      #  expr: (container_memory_usage_bytes{name=~"wordpress|wordpress-database|traefik"} / container_spec_memory_limit_bytes{name=~"wordpress|wordpress-database|traefik"}) * 100 > 90
+      #  for: 5m
+      #  labels:
+      #    severity: warning
+      #  annotations:
+      #    summary: "High Memory Usage for Secondary Container"
+      #    description: "{{ $labels.name }} is using more than 90% of its allocated memory for more than 5 minutes."
 
       # Low disk space for secondary containers (if applicable)
       - alert: SecondaryContainerLowDiskSpace
@@ -138,14 +138,14 @@ groups:
           description: "Container {{ $labels.name }} CPU usage is above 95% for more than 5 minutes."
 
       # High memory usage for monitoring containers
-      - alert: MonitoringContainerHighMemoryUsage
-        expr: (container_memory_usage_bytes{name=~"prometheus|cadvisor|grafana|alertmanager|node_exporter"} / container_spec_memory_limit_bytes{name=~"prometheus|cadvisor|grafana|alertmanager|node_exporter"}) * 100 > 95
-        for: 5m
-        labels:
-          severity: warning
-        annotations:
-          summary: "High Memory Usage for Monitoring Container"
-          description: "{{ $labels.name }} is using more than 95% of its allocated memory for more than 5 minutes."
+      #- alert: MonitoringContainerHighMemoryUsage
+      #  expr: (container_memory_usage_bytes{name=~"prometheus|cadvisor|grafana|alertmanager|node_exporter"} / container_spec_memory_limit_bytes{name=~"prometheus|cadvisor|grafana|alertmanager|node_exporter"}) * 100 > 95
+      #  for: 5m
+      #  labels:
+      #    severity: warning
+      #  annotations:
+      #    summary: "High Memory Usage for Monitoring Container"
+      #    description: "{{ $labels.name }} is using more than 95% of its allocated memory for more than 5 minutes."
 
       # Low disk space for monitoring containers (if applicable)
       - alert: MonitoringContainerLowDiskSpace
