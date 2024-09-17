@@ -37,7 +37,7 @@ git clone https://github.com/vanilla-reforged/monitoring-vmangos-docker/
 ### Move into the repository and make all scripts executable
 
 ```sh
-cd monitoring-vmangps-docker
+cd monitoring-vmangos-docker
 ```
 
 ### Installation
