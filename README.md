@@ -1,5 +1,5 @@
 
-## A Docker setup to monitor vmangos-docker with prometheus
+## A Docker setup to monitor vmangos-docker with cadvisor, grafana and prometheus.
 
 ## Dependencies
 
