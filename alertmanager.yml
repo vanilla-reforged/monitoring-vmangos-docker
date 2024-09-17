@@ -11,11 +11,12 @@ route:
 receivers:
   - name: 'discord-webhook'
     webhook_configs:
-      - url: 'YOUR_DISCORD_WEBHOOK_URL'  # Replace with your actual Discord webhook URL
+      - url: 'https://discord.com/api/webhooks/1285592497229402194/ZF_2iy9wmEOkIamM5XxoQy376m-yFfPogyMIFXfVZd7OGJbkCLjmzBrq8w9OeeJLPsr0'
         send_resolved: true
+        http_config:
+          follow_redirects: true
 
 inhibit_rules:
-  # Example of inhibition rules
   - source_match:
       severity: 'critical'
     target_match:
