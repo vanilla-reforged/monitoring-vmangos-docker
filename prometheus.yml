@@ -1,25 +1,16 @@
-# Global configuration
 global:
-  scrape_interval: 1m           # Set the scrape interval to every 1 minute.
-  evaluation_interval: 1m       # Evaluate rules every 1 minute.
-  # Attach external labels to any time series or alerts when communicating with external systems.
-  external_labels:
-    monitor: "monitoring-vmangos-docker"
+  scrape_interval: 15s
+  evaluation_interval: 15s
 
-# Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
-rule_files:
-  # Define rule files here if needed.
-  # - "first.rules"
-  # - "second.rules"
-
-# Scrape configurations
 scrape_configs:
-  # Scrape Prometheus metrics
-  - job_name: prometheus
+  - job_name: 'prometheus'
     static_configs:
-      - targets: ["127.0.0.1:9090"]  # Scrape Prometheus itself on port 9090
+      - targets: ['localhost:9090']
 
-  # Scrape Docker daemon metrics
-  - job_name: docker
+  - job_name: 'cadvisor'
     static_configs:
-      - targets: ["127.0.0.1:9323"]  # Scrape Docker metrics exposed on localhost:9323
+      - targets: ['cadvisor:8080']
+
+  - job_name: 'node_exporter'
+    static_configs:
+      - targets: ['node_exporter:9100']
