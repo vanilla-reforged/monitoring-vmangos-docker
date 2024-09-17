@@ -9,6 +9,29 @@ NEW_CONFIG='{
   "experimental": true
 }'
 
+# Install jq if it is not already installed
+echo "Checking if jq is installed..."
+if ! command -v jq &> /dev/null; then
+  echo "jq is not installed. Installing jq..."
+  # Check for Debian/Ubuntu and install jq
+  if [[ $(uname -a) == *"Debian"* || $(uname -a) == *"Ubuntu"* ]]; then
+    sudo apt-get update
+    sudo apt-get install -y jq
+  # Check for CentOS/RHEL and install jq
+  elif [[ -f /etc/redhat-release ]]; then
+    sudo yum install -y epel-release
+    sudo yum install -y jq
+  # Check for Fedora and install jq
+  elif [[ -f /etc/fedora-release ]]; then
+    sudo dnf install -y jq
+  else
+    echo "Unsupported OS. Please install jq manually."
+    exit 1
+  fi
+else
+  echo "jq is already installed."
+fi
+
 # Check if the configuration file exists
 if [ -f "$CONFIG_FILE" ]; then
   echo "Configuration file exists. Merging new settings with existing ones..."
