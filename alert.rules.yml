@@ -1,4 +1,15 @@
 groups:
+  - name: heartbeat-rules
+    rules:
+      - alert: DailyMonitoringHeartbeat
+        expr: absent(heartbeat{job="manual"})
+        for: 10m
+        labels:
+          severity: info
+        annotations:
+          summary: "Daily Monitoring Heartbeat Missing"
+          description: "The daily monitoring heartbeat alert was not received at the expected time."
+
   - name: docker-host-rules
     rules:
       # CPU usage on Docker host
