@@ -51,6 +51,10 @@ docker compose up -d
 ### Access
 
 cAdvisor: http://[yourip]:8080
+
 Grafna: http://[yourip]:3030
+
 Prometheus: http://[yourip]:9090
 
+Dashboard:
+https://grafana.com/grafana/dashboards/15120-raspberry-pi-docker-monitoring/
