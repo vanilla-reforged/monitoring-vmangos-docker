@@ -14,7 +14,7 @@ echo "Checking if jq is installed..."
 if ! command -v jq &> /dev/null; then
   echo "jq is not installed. Installing jq..."
   # Check for Debian/Ubuntu and install jq
-  if [[ $(uname -a) == *"Debian"* || $(uname -a) == *"Ubuntu"* ]]; then
+  if [[ -f /etc/debian_version ]]; then
     sudo apt-get update
     sudo apt-get install -y jq
   # Check for CentOS/RHEL and install jq
@@ -32,14 +32,27 @@ else
   echo "jq is already installed."
 fi
 
-# Check if the configuration file exists
+# Backup the existing configuration file if it exists
 if [ -f "$CONFIG_FILE" ]; then
-  echo "Configuration file exists. Merging new settings with existing ones..."
+  echo "Backing up the existing configuration file..."
+  sudo cp "$CONFIG_FILE" "${CONFIG_FILE}.backup"
+fi
+
+# Check if the configuration file exists and is not empty
+if [ -s "$CONFIG_FILE" ]; then
+  echo "Configuration file exists and is not empty. Merging new settings with existing ones..."
   
   # Merge the existing configuration with the new configuration
   sudo jq --argjson newConfig "$NEW_CONFIG" '. * $newConfig' "$CONFIG_FILE" | sudo tee "$CONFIG_FILE" > /dev/null
+  
+  # Check if the merge was successful
+  if [ $? -ne 0 ]; then
+    echo "Error merging configurations. Restoring from backup..."
+    sudo mv "${CONFIG_FILE}.backup" "$CONFIG_FILE"
+    exit 1
+  fi
 else
-  echo "Configuration file does not exist. Creating a new one with the specified settings..."
+  echo "Configuration file does not exist or is empty. Creating a new one with the specified settings..."
   
   # Create the configuration file with the new settings
   echo "$NEW_CONFIG" | sudo tee "$CONFIG_FILE" > /dev/null
@@ -54,4 +67,10 @@ if [ $? -eq 0 ]; then
   echo "Docker configuration updated successfully. Docker is now exposing metrics on 127.0.0.1:9323."
 else
   echo "Failed to restart Docker. Please check the Docker service status for errors."
+  # Restore from backup if Docker restart fails
+  if [ -f "${CONFIG_FILE}.backup" ]; then
+    echo "Restoring the original configuration..."
+    sudo mv "${CONFIG_FILE}.backup" "$CONFIG_FILE"
+    sudo systemctl restart docker
+  fi
 fi
