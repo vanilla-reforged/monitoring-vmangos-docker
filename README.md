@@ -66,3 +66,7 @@ Grafana Dashboard:
 ```sh
 https://grafana.com/grafana/dashboards/15120-raspberry-pi-docker-monitoring/
 ```
+How to integrate Grafana with Discord:
+```sh
+https://grafana.com/docs/grafana/latest/alerting/configure-notifications/manage-contact-points/integrations/configure-discord/
+```
