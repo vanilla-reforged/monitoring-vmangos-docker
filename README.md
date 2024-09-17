@@ -49,12 +49,20 @@ docker compose up -d
 ```
 
 ### Access
+```sh
+cAdvisor:
+http://[yourip]:8080
+```
+```sh
+Grafana:
+http://[yourip]:3030
+```
+```sh
+Prometheus:
+http://[yourip]:9090
+```
 
-cAdvisor: http://[yourip]:8080
-
-Grafna: http://[yourip]:3030
-
-Prometheus: http://[yourip]:9090
-
-Dashboard:
+Grafana Dashboard:
+```sh
 https://grafana.com/grafana/dashboards/15120-raspberry-pi-docker-monitoring/
+```
