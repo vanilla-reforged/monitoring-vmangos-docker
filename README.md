@@ -47,3 +47,6 @@ Start your environment:
 ```sh
 docker compose up -d
 ```
+
+Prometheus can be accessed on port 9090
+cAdvisor can be accessed on port 8080
