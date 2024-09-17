@@ -48,5 +48,9 @@ Start your environment:
 docker compose up -d
 ```
 
-Prometheus can be accessed on port 9090
-cAdvisor can be accessed on port 8080
+### Access
+
+cAdvisor: http://[yourip]:8080
+Grafna: http://[yourip]:3030
+Prometheus: http://[yourip]:9090
+
