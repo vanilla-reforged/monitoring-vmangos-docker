@@ -72,3 +72,8 @@ https://grafana.com/docs/grafana/latest/alerting/configure-notifications/manage-
 ```
 
 Input your webhook in alertmanager.yml to receive discord notifications.
+
+Schedule the daily alert tab with cron
+
+0 6 * * * /path/to/your/01-daily-alert-test.sh
+
