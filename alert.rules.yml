@@ -1,4 +1,15 @@
 groups:
+  - name: heartbeat-rules
+    rules:
+      - alert: DailyMonitoringHeartbeat
+        expr: (time() % 86400) >= 21600 and (time() % 86400) < 21660
+        for: 1m
+        labels:
+          severity: info
+        annotations:
+          summary: "Daily Monitoring Heartbeat"
+          description: "This is a daily heartbeat alert to confirm that monitoring and alerting are operational. Triggered at {{ $labels.instance }} at 6 AM."
+
   - name: docker-host-rules
     rules:
       # CPU usage on Docker host
