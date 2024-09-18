@@ -60,6 +60,8 @@ services:
     environment:
       - GF_SECURITY_ADMIN_PASSWORD=admin  # Set a default admin password (change as needed)
     restart: unless-stopped
+    volumes:
+      - ./grafana-data:/var/lib/grafana
 
 networks:
   monitoring:
