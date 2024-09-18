@@ -48,21 +48,6 @@ Start your environment:
 docker compose up -d
 ```
 
-### Access
-
-cAdvisor:
-```sh
-http://[yourip]:8080
-```
-Grafana:
-```sh
-http://[yourip]:3030
-```
-Prometheus:
-```sh
-http://[yourip]:9090
-```
-
 ### Setup
 
 Discord Webhook:
@@ -76,14 +61,23 @@ with your discord webhook in
 alertmanager.yml
 ```
 
-Grafana Dashboard:
+Suggested Grafana Dashboard:
 
 ```sh
 https://grafana.com/grafana/dashboards/15120-raspberry-pi-docker-monitoring/
 ```
 
-How to integrate Grafana with Discord:
+### Access
 
+cAdvisor:
 ```sh
-https://grafana.com/docs/grafana/latest/alerting/configure-notifications/manage-contact-points/integrations/configure-discord/
+http://[yourip]:8080
+```
+Grafana:
+```sh
+http://[yourip]:3030
+```
+Prometheus:
+```sh
+http://[yourip]:9090
 ```
