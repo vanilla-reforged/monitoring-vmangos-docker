@@ -12,7 +12,7 @@ receivers:
     slack_configs:
       - api_url: 'DISCORD_WEBHOOK_HERE'
         send_resolved: true
-        text: "Alert: {{ .CommonLabels.alertname }}"
+        text: "Simple alert test"
 
 inhibit_rules:
   - source_match:
