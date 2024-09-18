@@ -62,20 +62,28 @@ Prometheus:
 ```sh
 http://[yourip]:9090
 ```
+
+### Setup
+
+Discord Webhook:
+
+Replace
+```sh
+DISCORD_WEBHOOK
+```
+with your discord webhook in
+```sh
+alertmanager.yml
+```
+
 Grafana Dashboard:
+
 ```sh
 https://grafana.com/grafana/dashboards/15120-raspberry-pi-docker-monitoring/
 ```
+
 How to integrate Grafana with Discord:
+
 ```sh
 https://grafana.com/docs/grafana/latest/alerting/configure-notifications/manage-contact-points/integrations/configure-discord/
 ```
-
-Input your webhook in alertmanager.yml to receive discord notifications.
-
-Schedule the daily alert tab with cron
-
-crontab -e
-
-0 6 * * * /path/to/your/01-daily-alert-test.sh
-
