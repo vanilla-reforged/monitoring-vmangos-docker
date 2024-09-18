@@ -18,6 +18,7 @@ receivers:
           **Description:** {{ .Annotations.description }}
           **Severity:** {{ .Labels.severity }}
           {{ end }}
+        send_resolved: true  # This enables sending resolved messages
 
 inhibit_rules:
   - source_match:
