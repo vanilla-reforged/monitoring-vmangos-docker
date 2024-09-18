@@ -8,7 +8,7 @@ route:
   repeat_interval: 1h
 
 receivers:
-  - name: 'discord-webhook'
+  - name: 'Alertmanager'
     webhook_configs:
       - url: 'DISCORD_WEBHOOK_HERE'
         send_resolved: true
