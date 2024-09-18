@@ -52,11 +52,7 @@ docker compose up -d
 
 Discord Webhook:
 
-Replace
-```sh
-DISCORD_WEBHOOK
-```
-with your discord webhook in
+Replace "DISCORD_WEBHOOK" with your personal discord webhook in
 ```sh
 alertmanager.yml
 ```
