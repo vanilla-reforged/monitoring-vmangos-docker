@@ -9,8 +9,19 @@ route:
 
 receivers:
   - name: 'Alertmanager'
-    webhook_configs:
-      - url: 'DISCORD_WEBHOOK_HERE'
+    slack_configs:
+      - api_url: 'DISCORD_WEBHOOK_HERE'
+        channel: '#your_channel'
+        username: 'Alertmanager'
+        send_resolved: true
+        title: |-
+          [{{ .Status | toUpper }}] {{ .CommonLabels.alertname }}
+        text: |-
+          {{ range .Alerts }}
+          *Alert:* {{ .Annotations.title }}  
+          *Description:* {{ .Annotations.description }}  
+          *Details:* {{ range .Labels.SortedPairs }} `{{ .Name }}: {{ .Value }}` {{ end }}
+          {{ end }}
 
 inhibit_rules:
   - source_match:
