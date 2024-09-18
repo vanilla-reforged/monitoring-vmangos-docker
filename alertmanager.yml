@@ -11,10 +11,6 @@ receivers:
   - name: 'Alertmanager'
     webhook_configs:
       - url: 'DISCORD_WEBHOOK_HERE'
-        send_resolved: true
-        max_alerts: 1  # Adjust to avoid rate limiting by Discord
-        http_config:
-          follow_redirects: true  # Ensures redirects are followed if needed
 
 inhibit_rules:
   - source_match:
