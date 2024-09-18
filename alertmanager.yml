@@ -11,17 +11,10 @@ receivers:
   - name: 'Alertmanager'
     slack_configs:
       - api_url: 'DISCORD_WEBHOOK_HERE'
-        channel: '#your_channel'
         username: 'Alertmanager'
+        icon_url: 'https://avatars3.githubusercontent.com/u/3380462'
         send_resolved: true
-        title: |-
-          [{{ .Status | toUpper }}] {{ .CommonLabels.alertname }}
-        text: |-
-          {{ range .Alerts }}
-          *Alert:* {{ .Annotations.title }}  
-          *Description:* {{ .Annotations.description }}  
-          *Details:* {{ range .Labels.SortedPairs }} `{{ .Name }}: {{ .Value }}` {{ end }}
-          {{ end }}
+        text: "Alert: {{ .CommonLabels.alertname }}"
 
 inhibit_rules:
   - source_match:
