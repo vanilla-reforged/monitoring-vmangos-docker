@@ -12,7 +12,6 @@ receivers:
     slack_configs:
       - api_url: 'DISCORD_WEBHOOK_HERE'
         username: 'Alertmanager'
-        icon_url: 'https://avatars3.githubusercontent.com/u/3380462'
         send_resolved: true
         text: "Alert: {{ .CommonLabels.alertname }}"
 
