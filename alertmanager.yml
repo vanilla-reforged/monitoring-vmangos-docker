@@ -11,7 +11,6 @@ receivers:
   - name: 'discord-receiver'
     slack_configs:
       - api_url: 'DISCORD_WEBHOOK_HERE'
-        username: 'Alertmanager'
         send_resolved: true
         text: "Alert: {{ .CommonLabels.alertname }}"
 
