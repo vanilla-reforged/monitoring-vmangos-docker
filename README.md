@@ -32,7 +32,7 @@ Make sure to replace `[your-client-ip]` and `[Port]` with your actual IP address
 
 ### Step 1: Clone the Repository
 
-Clone this repository to your local environment:
+Use a User with ID:GROUPID 1000:1000 for this step (default user on ubuntu).:
 
     git clone https://github.com/vanilla-reforged/monitoring-vmangos-docker
     cd monitoring-vmangos-docker
