@@ -1,82 +1,86 @@
+# Monitoring VMaNGOS with Docker
 
-## A Docker setup to monitor vmangos-docker
+This repository contains a Docker-based setup for monitoring the VMaNGOS environment.
 
-## Dependencies
+## Prerequisites
 
-- Docker
-- Docker compose 2
+- **Docker**
+- **Docker Compose 2.x**
 
-## Security
+Ensure Docker and Docker Compose are installed and up-to-date on your system before proceeding.
 
-Secure your system by understanding the following information: [ufw-docker](https://github.com/chaifeng/ufw-docker).
+## Security Considerations
 
-The ufw commands you will need to secure your installation:
+To secure your system, it's recommended to configure firewall rules with UFW. For more details, refer to the [ufw-docker guide](https://github.com/chaifeng/ufw-docker).
 
-### Management:
+### Essential UFW Commands
 
-```sh
-ufw allow from [your client ip]
-ufw route allow proto tcp from [your client ip] to any
-```
+- **Allow management access from a specific IP**:
+    ```bash
+    ufw allow from [your-client-ip]
+    ufw route allow proto tcp from [your-client-ip] to any
+    ```
 
-### Public Access:
+- **Allow public access to specific ports**:
+    ```bash
+    ufw route allow proto tcp from any to any port [Port]
+    ```
 
-```sh
-ufw route allow proto tcp from any to any port [Port]
-ufw route allow proto tcp from any to any port [Port]
-```
+Make sure to replace `[your-client-ip]` and `[Port]` with your actual IP address and desired port number.
 
-## Docker Setup
+## Setup Instructions
 
-### Clone the Repository
+### Step 1: Clone the Repository
 
-```sh
-git clone https://github.com/vanilla-reforged/monitoring-vmangos-docker/
-```
+Clone this repository to your local environment:
 
-## Prepare the Environment
+    ```bash
+    git clone https://github.com/vanilla-reforged/monitoring-vmangos-docker
+    cd monitoring-vmangos-docker
+    ```
 
-Execute Scripts 01 and 02
+### Step 2: Prepare the Environment
 
-### Installation
+Run the initial setup scripts:
 
-Start your environment:
+    ```bash
+    ./scripts/01-docker-daemon-metrics-expose.sh
+    ./scripts/02-grafana-directory-permissions-set.sh
+    ```
 
-```sh
-docker compose up -d
-```
+### Step 3: Configure Alerts
 
-### Setup
+Set up your Discord webhook for notifications:
 
-Discord Webhook:
+1. Open `alertmanager.yml`.
+2. Replace `DISCORD_WEBHOOK` with your actual Discord webhook URL.
 
-Replace "DISCORD_WEBHOOK" with your personal discord webhook in
-```sh
-alertmanager.yml
-```
+### Step 4: Start the Monitoring Stack
 
-Suggested Grafana Dashboard:
+Start your monitoring environment using Docker Compose:
 
-```sh
-https://grafana.com/grafana/dashboards/15120-raspberry-pi-docker-monitoring/
-```
+    ```bash
+    docker compose up -d
+    ```
 
-### Access
+### Step 5: Suggested Grafana Dashboard
 
-cAdvisor:
-```sh
-http://[yourip]:8080
-```
-Grafana:
-```sh
-http://[yourip]:3030
-```
-Prometheus:
-```sh
-http://[yourip]:9090
-```
+For a comprehensive overview of your Docker environment, we recommend using this Grafana dashboard:
 
-## Vanilla Reforged Links
+- [Raspberry Pi Docker Monitoring Dashboard](https://grafana.com/grafana/dashboards/15120-raspberry-pi-docker-monitoring/)
+
+## Access the Monitoring Tools
+
+Once the stack is running, you can access the following tools:
+
+- **cAdvisor**: `http://[your-ip]:8080`
+- **Grafana**: `http://[your-ip]:3030`
+- **Prometheus**: `http://[your-ip]:9090`
+
+Be sure to replace `[your-ip]` with your server’s actual IP address.
+
+## Additional Resources
+
 - [Vanilla Reforged Website](https://vanillareforged.org/)
 - [Vanilla Reforged Discord](https://discord.gg/KkkDV5zmPb)
 - [Vanilla Reforged Patreon](https://www.patreon.com/vanillareforged)
