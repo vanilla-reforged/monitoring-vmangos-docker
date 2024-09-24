@@ -34,19 +34,15 @@ Make sure to replace `[your-client-ip]` and `[Port]` with your actual IP address
 
 Clone this repository to your local environment:
 
-
     git clone https://github.com/vanilla-reforged/monitoring-vmangos-docker
     cd monitoring-vmangos-docker
-    ```
 
 ### Step 2: Prepare the Environment
 
 Run the initial setup scripts:
 
-    ```sh
     ./scripts/01-docker-daemon-metrics-expose.sh
     ./scripts/02-grafana-directory-permissions-set.sh
-    ```
 
 ### Step 3: Configure Alerts
 
@@ -59,9 +55,7 @@ Set up your Discord webhook for notifications:
 
 Start your monitoring environment using Docker Compose:
 
-    ```sh
     docker compose up -d
-    ```
 
 ### Step 5: Suggested Grafana Dashboard
 
