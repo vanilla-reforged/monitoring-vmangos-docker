@@ -34,11 +34,9 @@ ufw route allow proto tcp from any to any port [Port]
 git clone https://github.com/vanilla-reforged/monitoring-vmangos-docker/
 ```
 
-### Move into the repository and make all scripts executable
+## Prepare the Environment
 
-```sh
-cd monitoring-vmangos-docker
-```
+Execute Scripts 01 and 02
 
 ### Installation
 
@@ -77,3 +75,8 @@ Prometheus:
 ```sh
 http://[yourip]:9090
 ```
+
+## Vanilla Reforged Links
+- [Vanilla Reforged Website](https://vanillareforged.org/)
+- [Vanilla Reforged Discord](https://discord.gg/KkkDV5zmPb)
+- [Vanilla Reforged Patreon](https://www.patreon.com/vanillareforged)
