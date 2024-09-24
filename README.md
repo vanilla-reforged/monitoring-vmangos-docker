@@ -34,7 +34,7 @@ Make sure to replace `[your-client-ip]` and `[Port]` with your actual IP address
 
 Clone this repository to your local environment:
 
-    ```sh
+
     git clone https://github.com/vanilla-reforged/monitoring-vmangos-docker
     cd monitoring-vmangos-docker
     ```
