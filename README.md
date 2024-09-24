@@ -16,13 +16,13 @@ To secure your system, it's recommended to configure firewall rules with UFW. Fo
 ### Essential UFW Commands
 
 - **Allow management access from a specific IP**:
-    ```bash
+    ```sh
     ufw allow from [your-client-ip]
     ufw route allow proto tcp from [your-client-ip] to any
     ```
 
 - **Allow public access to specific ports**:
-    ```bash
+    ```sh
     ufw route allow proto tcp from any to any port [Port]
     ```
 
@@ -34,7 +34,7 @@ Make sure to replace `[your-client-ip]` and `[Port]` with your actual IP address
 
 Clone this repository to your local environment:
 
-    ```bash
+    ```sh
     git clone https://github.com/vanilla-reforged/monitoring-vmangos-docker
     cd monitoring-vmangos-docker
     ```
@@ -43,7 +43,7 @@ Clone this repository to your local environment:
 
 Run the initial setup scripts:
 
-    ```bash
+    ```sh
     ./scripts/01-docker-daemon-metrics-expose.sh
     ./scripts/02-grafana-directory-permissions-set.sh
     ```
@@ -59,7 +59,7 @@ Set up your Discord webhook for notifications:
 
 Start your monitoring environment using Docker Compose:
 
-    ```bash
+    ```sh
     docker compose up -d
     ```
 
