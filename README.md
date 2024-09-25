@@ -32,7 +32,7 @@ Make sure to replace `[your-client-ip]` and `[Port]` with your actual IP address
 
 ### Step 1: Clone the Repository
 
-Use a User with ID:GROUPID 1000:1000 for this step (default user on ubuntu).:
+Use a User with UID:GUID 1000:1000 for this step (default user on ubuntu).:
 
     git clone https://github.com/vanilla-reforged/monitoring-vmangos-docker
     cd monitoring-vmangos-docker
@@ -55,7 +55,7 @@ Set up your Discord webhook for notifications:
 
 Start your monitoring environment using Docker Compose:
 
-    docker compose up -d
+    sudo docker compose up -d
 
 ### Step 5: Suggested Grafana Dashboard
 
