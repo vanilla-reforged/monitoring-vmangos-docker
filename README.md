@@ -65,9 +65,13 @@ For a comprehensive overview of your Docker environment, we recommend using this
 
 ## Access the Monitoring Tools
 
-Once the stack is running, you can access the differnt tools by using the port you see with sudo docker ps and the ip of your system.
+Once the stack is running, you can access the different tools by using:
 
-`http://[your-ip]:[port]`
+`prometheus [your-ip]:9090`
+`cadvisor [your-ip]:8080`
+`node_exporte [your-ip]:9100`
+`alertmanager [your-ip]:9093`
+`grafana [your-ip]:3000`
 
 Be sure to replace `[your-ip]` with your server’s actual IP address.
 
