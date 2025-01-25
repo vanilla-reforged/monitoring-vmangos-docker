@@ -17,7 +17,7 @@ To secure your system, it's recommended to configure firewall rules with UFW. Fo
 
 - **Allow management access from a specific IP**:
     ```sh
-    ufw allow from [your-client-ip]
+    ufw allow from [your-client-ip] to any
     ufw route allow proto tcp from [your-client-ip] to any
     ```
 
