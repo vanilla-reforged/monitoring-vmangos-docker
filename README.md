@@ -41,8 +41,8 @@ Use a User with UID:GUID 1000:1000 for this step (default user on ubuntu).:
 
 Run the initial setup scripts:
 
-    ./scripts/01-docker-daemon-metrics-expose.sh
-    ./scripts/02-grafana-directory-permissions-set.sh
+    ./01-docker-daemon-metrics-expose.sh
+    ./02-grafana-directory-permissions-set.sh
 
 ### Step 3: Configure Alerts
 
