@@ -11,9 +11,17 @@ Ensure Docker and Docker Compose are installed and up-to-date on your system bef
 
 ## Security Considerations
 
-To secure your system, it's recommended to configure firewall rules with UFW. For more details, refer to the [ufw-docker guide](https://github.com/chaifeng/ufw-docker).
+### Using Tailscale
 
-### Essential UFW Commands
+[Tailscale](https://tailscale.com/)
+
+Use Tailscale and keep in mind that any port you bind to a container may bypass UFW and become exposed to the public internet.
+
+This is fine as long as you only expose the ports that actually need internet access. For example, you can keep the Mangos database private and access it over Tailscale instead.
+
+To secure your system, refer to the [ufw-docker guide](https://github.com/chaifeng/ufw-docker) for essential firewall configurations.
+
+### Using UFW
 
 - **Allow management access from a specific IP**:
     ```sh
