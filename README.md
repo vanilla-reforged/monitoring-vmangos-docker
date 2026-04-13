@@ -15,11 +15,19 @@ Ensure Docker and Docker Compose are installed and up-to-date on your system bef
 
 [Tailscale](https://tailscale.com/)
 
-Use Tailscale and keep in mind that any port you bind to a container may bypass UFW and become exposed to the public internet.
+### Secure Container Access with Tailscale
 
-This is fine as long as you only expose the ports that actually need internet access. For example, you can keep the Mangos database private and access it over Tailscale instead.
+When using Tailscale, be aware that any port you bind to a container will bypass UFW without the modifcation below and become exposed to the public internet.
 
-To secure your system, refer to the [ufw-docker guide](https://github.com/chaifeng/ufw-docker) for essential firewall configurations.
+Only expose ports that require internet access.
+
+For example, you can keep your endpoints private and access it securely over Tailscale:
+
+    sudo tailscale serve --tcp 8090 tcp://127.0.0.1:8090
+
+To enable SSH access via Tailscale:
+
+    sudo tailscale up --ssh
 
 ### Using UFW
 
