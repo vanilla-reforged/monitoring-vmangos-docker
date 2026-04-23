@@ -95,5 +95,8 @@ Be sure to replace `[your-ip]` with your server’s actual IP address.
 
 - [Vanilla Reforged Website](https://vanillareforged.org/)
 - [Vanilla Reforged Discord](https://discord.gg/KkkDV5zmPb)
-- [My Patreon](https://www.patreon.com/vanillareforged)
-- [Buy Me a Coffee](https://buymeacoffee.com/vanillareforged)
+
+## My Links
+
+- [My Patreon](https://www.patreon.com/flyingfrog23)
+- [Buy Me a Coffee](https://buymeacoffee.com/flyingfrog23)
