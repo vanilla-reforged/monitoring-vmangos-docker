@@ -1,6 +1,4 @@
-# Monitoring VMaNGOS with Docker
-
-This repository contains a Docker-based setup for monitoring the VMaNGOS environment.
+## A Docker setup for VMaNGOS monitoring
 
 ## Prerequisites
 
