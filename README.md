@@ -9,40 +9,42 @@ This repository contains a Docker-based setup for monitoring the VMaNGOS environ
 
 Ensure Docker and Docker Compose are installed and up-to-date on your system before proceeding.
 
-## Security Considerations
+## Security
 
-### Using Tailscale
+### Docker and UFW
 
-[Tailscale](https://tailscale.com/)
+Docker ports can bypass UFW. Install [Chaifeng’s ufw-docker fix](https://github.com/chaifeng/ufw-docker) before exposing containers.
 
-### Secure Container Access with Tailscale
+Only publish ports that must be public.
 
-When using Tailscale, be aware that any port you bind to a container will bypass UFW without the modifcation below and become exposed to the public internet.
+### Tailscale
 
-Only expose ports that require internet access.
+Use [Tailscale](https://tailscale.com/) for private access:
 
-For example, you can keep your endpoints private and access it securely over Tailscale:
+```sh
+sudo tailscale serve --tcp 8090 tcp://127.0.0.1:8090
+```
 
-    sudo tailscale serve --tcp 8090 tcp://127.0.0.1:8090
+Enable Tailscale SSH:
 
-To enable SSH access via Tailscale:
+```sh
+sudo tailscale up --ssh
+```
 
-    sudo tailscale up --ssh
+### UFW Rules
 
-### Using UFW
+Allow access from one IP:
 
-- **Allow management access from a specific IP**:
-    ```sh
-    ufw allow from [your-client-ip] to any
-    ufw route allow proto tcp from [your-client-ip] to any
-    ```
+```sh
+sudo ufw allow from [your-client-ip]
+sudo ufw route allow proto tcp from [your-client-ip] to any
+```
 
-- **Allow public access to specific ports**:
-    ```sh
-    ufw route allow proto tcp from any to any port [Port]
-    ```
+Allow a public container port:
 
-Make sure to replace `[your-client-ip]` and `[Port]` with your actual IP address and desired port number.
+```sh
+sudo ufw route allow proto tcp from any to any port [port]
+```
 
 ## Setup Instructions
 
