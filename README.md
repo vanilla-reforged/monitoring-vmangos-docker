@@ -1,4 +1,4 @@
-## A Docker setup for VMaNGOS monitoring
+## A Docker setup for VMaNGOS monitoring.
 
 ## Prerequisites
 
